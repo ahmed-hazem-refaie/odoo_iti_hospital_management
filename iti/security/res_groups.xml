@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+        <record id="iti_category" model="ir.module.category">
+            <field name="name">ITI</field>
+        </record>
+
+        <record id="iti_staff_group" model="res.groups">
+            <field name="name">Staff</field>
+            <field name="category_id" ref="iti_category"/>
+            <!--            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+        </record>
+custom/hms/security/res_groups.xml
+
+        <!-- Global rule -->
+        <record id="own_students_rule" model="ir.rule">
+            <field name="name">Users own students only</field>
+            <field name="model_id" ref="model_iti_student"/>
+            <field name="domain_force">[('create_uid','=',user.id)]</field>
+        </record>
+
+        <record id="all_students_rule" model="ir.rule">
+            <field name="name">Manager All students</field>
+            <field name="model_id" ref="model_iti_student"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('iti_manager_group'))]"/>
+        </record>
+
+
+        <!-- Manager rule -->
+        <!--    <record id="rule_vehicle_diagnosis_manager" model="ir.rule">-->
+        <!--        <field name="name">Vehicle Diagnosis Manager All</field>-->
+        <!--        <field name="model_id" ref="model_vehicle_diagnosis"/>-->
+        <!--        <field name="groups" eval="[(4, ref('group_vehicle_diagnosis_manager'))]"/>-->
+        <!--        <field name="domain_force">[(1,'=',1)]</field>-->
+        <!--    </record>-->
+
+    </data>
+</odoo>

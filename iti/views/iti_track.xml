@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+        <record id="iti_track_tree_view" model="ir.ui.view">
+            <field name="name">Iti Track Tree view</field>
+            <field name="model">iti.track</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="track_name"/>
+                    <field name="is_open"/>
+                </tree>
+            </field>
+        </record>
+        <record id="iti_track_form_view" model="ir.ui.view">
+            <field name="name">Iti Track From view</field>
+            <field name="model">iti.track</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Basic Info">
+                            <field name="track_name"/>
+                            <field name="is_open"/>
+                        </group>
+                        <notebook>
+                            <page string="Students">
+                                <field name="student_ids">
+                                    <tree editable="top">
+                                        <field name="name"/>
+                                        <field name="salary"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_track" model="ir.actions.act_window">
+            <field name="name">Tracks</field>
+            <field name="res_model">iti.track</field>
+        </record>
+        <menuitem id="iti_track_menu" name="Tracks"
+                  parent="iti_root_menu"
+                  action="action_track"/>
+
+    </data>
+</odoo>

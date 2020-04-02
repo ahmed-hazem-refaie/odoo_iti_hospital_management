@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+        <record id="iti_user_group" model="res.groups">
+            <field name="name">user_hospital</field>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]" />
+
+        </record>
+
+           <record id="iti_manager_group" model="res.groups">
+            <field name="name">manager_hospital</field>
+            <field name="implied_ids" eval="[(4,ref('iti_user_group'))]" />
+
+        </record>
+    </data>
+</odoo>
+
+

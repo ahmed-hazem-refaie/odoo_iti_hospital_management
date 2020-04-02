@@ -1,0 +1,102 @@
+<odoo>
+
+    <data>
+
+          <record id="action_student" model="ir.actions.act_window">
+                      <field name="name">patients</field>
+                      <field name="res_model">hms.patient</field>
+                      <field name="view_type">form</field>
+                      <field name="view_mode">tree,form</field>
+          </record>
+
+         <record id="iti_tree" model="ir.ui.view">
+            <field name="name">HMS</field>
+            <field name="model">hms.patient</field>
+            <field name="arch" type="xml">
+                <tree>
+
+                    <field name="f_name"></field>
+                    <field name="l_name"></field>
+<!--                    <field name="image" nolabel="1" widget="image" class="oe_right oe_avatar"/>-->
+                </tree>
+            </field>
+         </record>
+
+        <record id="iti_form2" model="ir.ui.view">
+            <field name="name">HMS</field>
+            <field name="model">hms.patient</field>
+            <field name="arch" type="xml">
+
+                <form>
+                    <header>
+                        <button string="next" type="object" name="change_state"/>
+                        <field name="stage" widget="statusbar" />
+                    </header>
+                        <group>
+                              <group>
+                                      <field name="f_name" required="True"/>
+                                      <field name="l_name" required="True" />
+                                  <field name="create_date"/>
+                                  <field name="create_uid"/>
+                                  <field name="crm"/>
+
+                                </group>
+                            <group>
+                                <field name="Age"/>
+                                <field name="address"/>
+                                <field name="birth_date"/>
+                                <field name="email"/>
+                            </group>
+                            <group>
+                                <field name="history" attrs="{'invisible': [('Age','>','50')]}"/>
+                                <field name="CR_ratio"   attrs="{'required':[('PCR','=',True)]}"/>
+                                <field name="blood_type"/>
+                                <field name="PCR"/>
+                            </group>
+                            <group>
+                                 <field name="image" nolabel="1" widget="image" class="oe_right oe_avatar"/>
+                                <field name="department_id">
+                                    <group string="depart data">
+                                          <tree>
+                                        <field name="capacity"/>
+
+                                                  <field name="is_open"></field>
+                                    </tree>
+                                    </group>
+
+                                </field>
+                                <field  name="department_capacity"/>
+                            </group>
+
+                        </group>
+                        <notebook>
+                            <page string="doctors">
+<!--                                    <field name="doctor_ids">-->
+<!--                                <tree>-->
+<!--                                </tree>-->
+<!--                                    </field>-->
+                                <field name="doctor_ids" widget="many2many_tags">
+
+                                </field>
+                            </page>
+
+                            <page string="new">
+                                <field name="patient_logs_id"/>
+                            </page>
+                        </notebook>
+
+
+                </form>
+            </field>
+
+        </record>
+
+<!--        <menuitem id="iti_root_menu" name="ITI"/>-->
+        <menuitem id="hms_root" name="iti_hospital"/>
+        <menuitem id="iti_patient_menu" name="patient" parent="hms_root" action="action_student"/>
+
+
+
+
+    </data>
+</odoo>

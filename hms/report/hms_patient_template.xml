@@ -1,0 +1,18 @@
+<odoo>
+
+        <template  id="hms_patient_template">
+
+<!--            <t t-call="web.html_container">-->
+<!--                <t t-foreach="docs" t-as="o">-->
+<!--        &lt;!&ndash;            <t t-call="web.external_layout">&ndash;&gt;-->
+<!--                        <div class="page">-->
+<!--                            <h2>Report title</h2>-->
+<!--        &lt;!&ndash;                    <p>This object's name is <span t-field="o"/></p>&ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--                </t>-->
+<!--        &lt;!&ndash;    </t>&ndash;&gt;-->
+
+
+        </template>
+</odoo>

@@ -1,0 +1,89 @@
+<odoo>
+    <data>
+
+        <record id="iti_student_tree_view" model="ir.ui.view">
+            <field name="name">Iti Student Tree view</field>
+            <field name="model">iti.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="salary"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="iti_student_form_view" model="ir.ui.view">
+            <field name="name">Iti Student From view</field>
+            <field name="model">iti.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="Pass first interview" attrs="{'invisible': [('state', '!=', 'applied')]}"
+                                type="object" name="change_state"/>
+                        <button string="Pass Second interview" attrs="{'invisible': [('state', '!=', 'first')]}"
+                                type="object" name="change_state"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group string="Basic Info">
+                                <field name="name" required="True"/>
+                                <field name="age" readonly="True"/>
+                                <field name="basic_salary"/>
+                                <field name="bonus"/>
+                                <field name="salary"/>
+                                <field name="mobile"/>
+                                <field name="interview_time" attrs="{
+                                'required': ['|', ('is_accepted', '=', True), ('gender', '=', 'm')],
+                                }"/>
+                            </group>
+                            <group string="Extra Info">
+                                <field name="gender"/>
+                                <field name="military_certificate"
+                                       attrs="{
+                                'invisible': [('gender', '=', 'f')],
+                                'required': [('gender', '=', 'm')]
+                                }"/>
+                                <field name="is_accepted"/>
+                                <field name="birth_date"/>
+                                <field name="track_id" domain="[('is_open', '=', True)]"/>
+                                <field name="is_track_open"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Student Info">
+                                <field name="info"/>
+                            </page>
+                            <page string="CV">
+                                <field name="formatted_info"/>
+                            </page>
+                            <page string="Skills">
+                                <field name="skills_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_student" model="ir.actions.act_window">
+            <field name="name">Students</field>
+            <field name="res_model">iti.student</field>
+        </record>
+        <!--
+
+        menuitem no parent no action
+        menuitem parent no action
+        menuitem parent with action
+
+        -->
+        <menuitem id="iti_root_menu" name="ITI"/>
+        <menuitem id="iti_student_menu" name="Student"
+                  parent="iti_root_menu"
+                  action="action_student" groups=""/>
+
+    </data>
+</odoo>

@@ -1,0 +1,72 @@
+<odoo>
+
+    <data>
+        <record id="iti_tree" model="ir.ui.view">
+            <field name="name">itistudent</field>
+            <field name="model">hms.hms</field>
+            <field name="arch" type="xml">
+
+                <tree>
+                    <field name="f_name"/>
+
+                    <field name="l_name"/>
+                    <field name="BD"/>
+                    <field name="age"/>
+                    <field name="CR"/>
+                    <field name="x"/>
+                    <field name="img" nolabel="1" widget="image" class="oe_right oe_avatar"/>
+
+                </tree>
+
+            </field>
+        </record>
+
+         <record id="iti_form" model="ir.ui.view">
+            <field name="name">itistudent form</field>
+            <field name="model">hms.hms</field>
+            <field name="arch" type="xml">
+
+                <form>
+                    <field name="f_name"/>
+
+                    <field name="l_name"/>
+                    <field name="BD"/>
+                    <field name="age"/>
+                    <field name="CR"/>
+                    <field name="x"/>
+<!--                                <field name="img" nolabel="1" widget="image" class="oe_right oe_avatar"/>-->
+                <notebook>
+                    <page string="add">                                 <field name="img" nolabel="1" widget="image" class="oe_right oe_avatar"/>
+</page>
+                    <page string="show">
+                            <field name="l_name"/>
+                    <field name="BD"/>
+                    <field name="age"/>
+                    <field name="CR"/>
+                    <field name="x"/>
+                    </page>
+
+                    <page string="newpage">
+
+                    </page>
+                </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_student" model="ir.actions.act_window">
+              <field name="name">Studentsss</field>
+            <field name="res_model">hms.hms</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+
+
+        </record>
+<!--        <menuitem id="iti_root_menu" name="ITI"/>-->
+        <menuitem id="iti_menu" name="univeristy"/>
+        <menuitem id="iti_student_menu" name="data" parent="iti_menu"/>
+        <menuitem id="iti_student2_menu" name="actionno1" parent="iti_student_menu" action="action_student"/>
+
+    </data>
+</odoo>

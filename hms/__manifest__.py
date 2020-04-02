@@ -1,0 +1,12 @@
+{
+    'name':'my_hms',
+    'depends':['crm'],
+    'data':['security/res_groups.xml',
+            'security/ir.model.access.csv',
+            'views/patients.xml',
+            'views/department.xml',
+            'views/doctor.xml',
+            'views/logs.xml',
+            'views/hms_crm.xml',
+          ]
+}
