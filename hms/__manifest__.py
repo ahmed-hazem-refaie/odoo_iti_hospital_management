@@ -8,5 +8,7 @@
             'views/doctor.xml',
             'views/logs.xml',
             'views/hms_crm.xml',
+            'report/hms_patient_template.xml',
+            'report/hazem.xml'
           ]
 }

@@ -2,16 +2,73 @@
 
         <template  id="hms_patient_template">
 
-<!--            <t t-call="web.html_container">-->
-<!--                <t t-foreach="docs" t-as="o">-->
-<!--        &lt;!&ndash;            <t t-call="web.external_layout">&ndash;&gt;-->
-<!--                        <div class="page">-->
-<!--                            <h2>Report title</h2>-->
-<!--        &lt;!&ndash;                    <p>This object's name is <span t-field="o"/></p>&ndash;&gt;-->
-<!--                        </div>-->
-<!--                    </t>-->
-<!--                </t>-->
-<!--        &lt;!&ndash;    </t>&ndash;&gt;-->
+                    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+                <div style="text-align:center;" class="page">
+                    <h2>Report title</h2>
+                        <h1>hazemggggg</h1>
+                    <p>This patient's name is <span t-field="o.f_name"/><span t-field="o.l_name"/></p>
+                         <div style="width:100%;border-top:2px solid black:2px solid black;margin-top:10px">
+                            <span style="color:red;font-size:50px;margin-top:50px;margin-left:100px">Patient Status
+                                Report
+                            </span>
+                                 <hr></hr>
+<img t-attf-src="data:image/jpg;base64,{{ o.image }}" style="align:left; width:85px;height:85px;"/>
+
+                        </div>
+                        <table style=" border: 3px solid red;">
+                                          <tr style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                          <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                                <h1>information</h1> </td>
+                                          <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                                <h1>of patient</h1> </td>
+                                </tr>
+                                          <tr style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                          <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                                <h1>full name</h1> </td>
+                                          <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                                 <h1><span t-field="o.f_name"/><span t-field="o.l_name"/></h1> </td>
+                                </tr>
+                                          <tr style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                        <td><h1>Age</h1> </td>
+                                        <td><h1><span t-field="o.Age"/></h1> </td>
+                                </tr>
+                                          <tr style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                        <td><h1>Birth Date</h1> </td>
+                                        <td><h1><span t-field="o.birth_date"/></h1> </td>
+                                </tr>
+                                          <tr style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                        <td><h1>blood type</h1> </td>
+                                        <td><h1><span t-field="o.blood_type"/></h1> </td>
+                                </tr>
+
+                                          <tr style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                        <td><h1>CR RATIO</h1> </td>
+                                        <td><h1><span t-field="o.CR_ratio"/></h1> </td>
+                                </tr>
+
+                                          <tr style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                        <td><h1>CPR validity</h1> </td>
+                                        <td><h1><span t-field="o.PCR"/></h1> </td>
+                                </tr>
+                                          <tr style="border: 1px solid #dddddd;text-align: left;padding: 8px;">
+                                        <td><h1>address</h1> </td>
+                                        <td><h1><span t-field="o.address"/></h1> </td>
+                                </tr>
+
+                        </table>
+                                <t t-foreach="o.patient_logs_id" t-as="x">
+
+
+                                        <h1>description::</h1><span t-field="x.description"/>
+                                        <h1>done by::</h1><span t-field="x.create_uid"/>
+                                        <hr></hr>
+                                </t>
+                </div>
+            </t>
+        </t>
+    </t>
 
 
         </template>
